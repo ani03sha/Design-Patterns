@@ -17,5 +17,14 @@ public class Main {
 		
 		// Calling the Lazy Initialized Singleton
 		System.out.println("Lazy Initialized Singleton: " + LazyInitialized.getInstance().hashCode());
+		
+		// Calling the Thread Safe Singleton from two different threads
+		Runnable t1 = () -> {System.out.println("Singleton instance created by " + Thread.currentThread().getName() + " is: "
+				+ ThreadSafeSingleton.getInstance().hashCode());};
+		new Thread(t1).start();
+		
+		Runnable t2 = () -> {System.out.println("Singleton instance created by " + Thread.currentThread().getName() + " is: "
+				+ ThreadSafeSingleton.getInstance().hashCode());};
+		new Thread(t2).start();
 	}
 }
