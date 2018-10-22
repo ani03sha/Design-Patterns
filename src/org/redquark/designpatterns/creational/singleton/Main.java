@@ -14,5 +14,8 @@ public class Main {
 		
 		// Calling the Static Block Initialized Singleton
 		System.out.println("Static Block Initialized Singleton: " + StaticBlockInitialized.getInstance().hashCode());
+		
+		// Calling the Lazy Initialized Singleton
+		System.out.println("Lazy Initialized Singleton: " + LazyInitialized.getInstance().hashCode());
 	}
 }
