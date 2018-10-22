@@ -10,6 +10,9 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		// Calling the Eager Initialized Singleton
-		System.out.println("Eager Initialized Singleton: " + EagerInitialized.getInstance().hashCode());		
+		System.out.println("Eager Initialized Singleton: " + EagerInitialized.getInstance().hashCode());
+		
+		// Calling the Static Block Initialized Singleton
+		System.out.println("Static Block Initialized Singleton: " + StaticBlockInitialized.getInstance().hashCode());
 	}
 }
