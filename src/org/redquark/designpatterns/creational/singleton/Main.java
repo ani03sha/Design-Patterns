@@ -48,6 +48,8 @@ public class Main {
 		EnumSingleton singleton = EnumSingleton.INSTANCE;
 		System.out.println("Enum Singleton: " + singleton.hashCode());
 		
+		// Getting the singleton from the Bill Pugh implementation
+		System.out.println("Bill Pugh Singleton: " + BillPughSingleton.getInstance().hashCode());
 		
 	}
 }
