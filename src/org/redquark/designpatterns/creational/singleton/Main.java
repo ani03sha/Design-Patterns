@@ -11,20 +11,37 @@ public class Main {
 	public static void main(String[] args) {
 		// Calling the Eager Initialized Singleton
 		System.out.println("Eager Initialized Singleton: " + EagerInitialized.getInstance().hashCode());
-		
+
 		// Calling the Static Block Initialized Singleton
 		System.out.println("Static Block Initialized Singleton: " + StaticBlockInitialized.getInstance().hashCode());
-		
+
 		// Calling the Lazy Initialized Singleton
 		System.out.println("Lazy Initialized Singleton: " + LazyInitialized.getInstance().hashCode());
-		
+
 		// Calling the Thread Safe Singleton from two different threads
-		Runnable t1 = () -> {System.out.println("Singleton instance created by " + Thread.currentThread().getName() + " is: "
-				+ ThreadSafeSingleton.getInstance().hashCode());};
+		Runnable t1 = () -> {
+			System.out.println("Singleton instance created by " + Thread.currentThread().getName() + " is: "
+					+ ThreadSafeSingleton.getInstance().hashCode());
+		};
 		new Thread(t1).start();
-		
-		Runnable t2 = () -> {System.out.println("Singleton instance created by " + Thread.currentThread().getName() + " is: "
-				+ ThreadSafeSingleton.getInstance().hashCode());};
+
+		Runnable t2 = () -> {
+			System.out.println("Singleton instance created by " + Thread.currentThread().getName() + " is: "
+					+ ThreadSafeSingleton.getInstance().hashCode());
+		};
 		new Thread(t2).start();
+
+		// Calling the Double Checked Locking Singleton from two different threads
+		Runnable t3 = () -> {
+			System.out.println("Singleton instance created by " + Thread.currentThread().getName() + " is: "
+					+ DoubleCheckedLocking.getInstance().hashCode());
+		};
+		new Thread(t3).start();
+
+		Runnable t4 = () -> {
+			System.out.println("Singleton instance created by " + Thread.currentThread().getName() + " is: "
+					+ DoubleCheckedLocking.getInstance().hashCode());
+		};
+		new Thread(t4).start();
 	}
 }
