@@ -43,5 +43,11 @@ public class Main {
 					+ DoubleCheckedLocking.getInstance().hashCode());
 		};
 		new Thread(t4).start();
+		
+		// Getting the singleton from the Enum
+		EnumSingleton singleton = EnumSingleton.INSTANCE;
+		System.out.println("Enum Singleton: " + singleton.hashCode());
+		
+		
 	}
 }
