@@ -1,5 +1,12 @@
 package org.redquark.designpatterns.creational.singleton;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInput;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
+
 /**
  * @author Anirudh Sharma
  * Main class to invoke all the singleton types
@@ -51,5 +58,22 @@ public class Main {
 		// Getting the singleton from the Bill Pugh implementation
 		System.out.println("Bill Pugh Singleton: " + BillPughSingleton.getInstance().hashCode());
 		
+		// Getting the serialized singleton
+		try {
+		SerializedSingleton s1 = SerializedSingleton.getInstance();
+		ObjectOutput out = new ObjectOutputStream(new FileOutputStream("singleton.ser"));
+		out.writeObject(s1);
+		out.close();
+		
+		ObjectInput in = new ObjectInputStream(new FileInputStream("singleton.ser"));
+		SerializedSingleton s2 = (SerializedSingleton)in.readObject();
+		in.close();
+		
+		System.out.println("Serialized Singleton Object One: " + s1.hashCode());
+		System.out.println("Serialized Singleton Object Two: " + s2.hashCode());
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
